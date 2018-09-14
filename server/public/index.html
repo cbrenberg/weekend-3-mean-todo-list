@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +11,34 @@
   <script src="vendors/angular.min.js"></script>
   <script src="scripts/client.js"></script>
 </head>
-<body>
+
+<body class="container">
   <h1>Task Tracker</h1>
+  <form>
+    <div class="input-group">
+      <div id="taskInput">
+        <textarea id="todoIn" type="text" class="form-control" placeholder="I need to..."></textarea>
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text">Category</span></div>
+          <input class="form-control" id="categoryIn" type="text">
+        </div>
+      </div>
+
+      <div class="input-group-append">
+        <button class="btn btn-info" id="addButton">ADD</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <h2>Task List</h2>
+  <!-- sort by: completed or category (dropdown?) -->
+  <div class="input-group todoOut">
+    <input type="text" readonly class="todoText"/>
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button">Complete</button>
+      <button class="btn btn-outline-secondary" type="button">Delete</button>
+    </div>
+  </div>
 </body>
+
 </html>

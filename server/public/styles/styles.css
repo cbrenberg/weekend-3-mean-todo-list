@@ -1,0 +1,9 @@
+#taskInput {
+  width: 90%;
+}
+
+.todoText {
+  width: 75%;
+  border-radius: 5px;
+  border: 1px lightgray solid;
+}
