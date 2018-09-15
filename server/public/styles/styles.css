@@ -1,9 +1,18 @@
+body{
+  background-color: whitesmoke;
+}
+
 #taskInput {
-  width: 90%;
+  width: 80%;
 }
 
 .todoText {
-  width: 75%;
+  width: 65%;
   border-radius: 5px;
   border: 1px lightgray solid;
+  cursor: default;
+}
+
+#addButton {
+  padding: 6px 24px;
 }

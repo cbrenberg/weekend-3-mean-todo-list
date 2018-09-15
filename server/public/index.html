@@ -12,31 +12,36 @@
   <script src="scripts/client.js"></script>
 </head>
 
-<body class="container">
-  <h1>Task Tracker</h1>
-  <form>
-    <div class="input-group">
-      <div id="taskInput">
-        <textarea id="todoIn" type="text" class="form-control" placeholder="I need to..."></textarea>
-        <div class="input-group">
-          <div class="input-group-prepend"><span class="input-group-text">Category</span></div>
-          <input class="form-control" id="categoryIn" type="text">
+<body ng-app="TodoApp" ng-controller="TodoController as vm">
+  <div class="container">
+    <h1>Task Tracker</h1>
+    <p>{{vm.test}}</p>
+    
+    <form>
+      <div class="input-group">
+        <div id="taskInput">
+          <textarea id="todoIn" type="text" class="form-control" placeholder="I need to..." ng-model="vm.todoToAdd.task"></textarea>
+          <div class="input-group">
+            <div class="input-group-prepend"><span class="input-group-text">Category</span></div>
+            <input class="form-control" id="categoryIn" type="text" ng-model="vm.todoToAdd.category">
+          </div>
+        </div>
+        <div id="addButtonDiv" class="input-group-append">
+          <button class="btn btn-info" id="addButton" ng-click="vm.addTodo()">ADD</button>
         </div>
       </div>
+    </form>
+     {{vm.todoToAdd}}
 
+    <br>
+    <h2>Task List</h2>
+    <!-- sort by: completed or category (dropdown?) -->
+    <div class="input-group todoOut">
+      <input type="text" readonly class="todoText" />
       <div class="input-group-append">
-        <button class="btn btn-info" id="addButton">ADD</button>
+        <button class="btn btn-outline-secondary" type="button" ng-click="vm.markCompleted()">Complete</button>
+        <button class="btn btn-outline-dark" type="button" ng-click="vm.deleteTodo()">Delete</button>
       </div>
-    </div>
-  </form>
-  <br>
-  <h2>Task List</h2>
-  <!-- sort by: completed or category (dropdown?) -->
-  <div class="input-group todoOut">
-    <input type="text" readonly class="todoText"/>
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Complete</button>
-      <button class="btn btn-outline-secondary" type="button">Delete</button>
     </div>
   </div>
 </body>
