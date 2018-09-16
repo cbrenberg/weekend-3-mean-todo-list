@@ -62,3 +62,14 @@ app.post('/todo', (req, res) => {
     res.sendStatus(500);//server error
   })
 })
+
+app.delete('/todo', (req, res) => {
+  let todoToDelete = req.query._id
+  Todo.findByIdAndRemove(todoToDelete).then(()=>{
+    console.log('Deleted');
+    res.sendStatus(200);//success!
+  }).catch((error)=>{
+    console.log('Error deleting item:', error);
+    res.sendStatus(500);//server error
+  })
+})
