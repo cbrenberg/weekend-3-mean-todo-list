@@ -6,7 +6,6 @@ const todoApp = angular.module('TodoApp', []);
 todoApp.controller('TodoController', ['$http', function ($http) {
   //set scope variable
   const vm = this;
-  vm.test = 'Angular is loaded!';
 
   //vm variables
   vm.todoToAdd = {};

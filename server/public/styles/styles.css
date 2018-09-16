@@ -6,7 +6,7 @@ body{
   width: 80%;
 }
 
-.todoText {
+.todoText, .todoCategory {
   width: 68%;
   border-radius: 5px;
   border: 1px lightgray solid;
@@ -20,4 +20,24 @@ body{
 .todoOut {
   width: 100%;
   margin: auto;
+}
+
+.todoOutTextBoxes {
+  display: inline-block;
+  width: 100%;
+}
+
+hr {
+  background-color: darkgray;
+  width: 100%;
+}
+
+.deleteButton, .completeButton {
+  display: block;
+  width: 100%;
+}
+
+div.completed>.taskText {
+  color: gray;
+  text-decoration: line-through;
 }

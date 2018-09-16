@@ -15,8 +15,7 @@
 <body ng-app="TodoApp" ng-controller="TodoController as vm">
   <div class="container">
     <h1>Task Tracker</h1>
-    <p>{{vm.test}}</p>
-    
+
     <form>
       <div class="input-group">
         <div id="taskInput">
@@ -31,20 +30,23 @@
         </div>
       </div>
     </form>
-     {{vm.todoToAdd}}
 
     <br>
     <h2>Task List</h2>
+    <hr>
     <!-- sort by: completed or category (dropdown?) -->
-    <div ng-repeat="todo in vm.todoData" class="input-group todoOut">
+    <div ng-repeat="todo in vm.todoData | orderBy: 'completed'" class="todoOut container row" ng-class="{completed: todo.completed}">
       <!-- Change input to something else? Text gets cut off when longer than width of input box -->
-      <input type="text" readonly class="todoText" value="{{todo.task}}"/>
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" ng-click="vm.markCompleted(todo)">Complete</button>
-        <button class="btn btn-outline-dark" type="button" ng-click="vm.deleteTodo(todo)">Delete</button>
+      <div class="col col-9 taskText">
+        <h5 class="task">{{todo.task}}</h5>
+        <p class="category"><small>Category: {{todo.category}}</small></p>
       </div>
+      <div class="col col-3">
+        <input class="completeButton btn btn-outline-secondary align-middle" type="button" ng-click="vm.markCompleted(todo)" ng-disabled="todo.completed" value="Complete"/>
+        <input class="deleteButton btn btn-outline-dark align-middle" type="button" ng-click="vm.deleteTodo(todo)" value="Delete"/>
+      </div>
+      <hr>
     </div>
-  </div>
 </body>
 
 </html>
