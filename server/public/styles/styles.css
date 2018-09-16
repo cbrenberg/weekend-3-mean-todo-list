@@ -28,9 +28,11 @@ hr {
 }
 
 .deleteButton, .completeButton {
+  height: 100%;
   align-items: center;
   float: right;
-  margin-left: 1rem;
+  margin-left: .5rem;
+  margin-top: .5rem;
   cursor: pointer;
 }
 
