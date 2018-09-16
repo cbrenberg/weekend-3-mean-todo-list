@@ -17,6 +17,15 @@ todoApp.controller('TodoController', ['$http', function($http) {
   //GET
   vm.getTodos = function() {
     console.log('in getTodos');
+    $http({
+      method: 'GET', 
+      url: '/todo'
+    }).then(function(response) {
+      console.log('Back from /todo GET with:', response.data);
+      vm.todoData = response.data;
+    }).catch(function(error) {
+      console.log('Error retrieving todo items:', error);
+    })
   }
 
   //POST

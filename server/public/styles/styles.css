@@ -7,7 +7,7 @@ body{
 }
 
 .todoText {
-  width: 65%;
+  width: 68%;
   border-radius: 5px;
   border: 1px lightgray solid;
   cursor: default;
@@ -15,4 +15,9 @@ body{
 
 #addButton {
   padding: 6px 24px;
+}
+
+.todoOut {
+  width: 100%;
+  margin: auto;
 }

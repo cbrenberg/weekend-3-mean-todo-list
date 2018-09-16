@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 //globals
 const PORT = process.env.PORT || 5000;
-const mongoUrl = 'mongodb://localhost:27017/todoList'
+const mongoUrl = 'mongodb://localhost:27017/todolist'
 
 //uses
 app.use(bodyParser.json());
@@ -27,7 +27,7 @@ mongoose.connection.on('error', (error) => {
 
 
 //Move to /todo router later
-const Schema = mongoose.Schema; // Similar to a Class
+const Schema = mongoose.Schema; // Set schema for database
 
 const todoSchema = new Schema({
   task: { type: String, required: true },
@@ -35,9 +35,19 @@ const todoSchema = new Schema({
   category: { type: String, required: true }
 });
 
-const Todo = mongoose.model('todos', todoSchema);
+const Todo = mongoose.model('todo', todoSchema);
 
 //spin up server
 app.listen(PORT, () => {
   console.log('Listening on port', PORT);
+})
+
+app.get('/todo', (req, res) => {
+  Todo.find({}).then(function(todosFound) {
+    console.log('/todo GET hit:', todosFound)
+    res.send(todosFound);//respond to client with db items
+  }).catch((error) => {
+    console.log('Error retrieving todos:', error);
+    res.sendStatus(500); // server error
+  })
 })
