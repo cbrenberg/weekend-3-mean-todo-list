@@ -22,22 +22,36 @@ body{
   margin: auto;
 }
 
-.todoOutTextBoxes {
-  display: inline-block;
-  width: 100%;
-}
-
 hr {
   background-color: darkgray;
   width: 100%;
 }
 
 .deleteButton, .completeButton {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  align-items: center;
+  float: right;
+  margin-left: 1rem;
+  cursor: pointer;
 }
 
 div.completed>.taskText {
   color: gray;
   text-decoration: line-through;
+}
+
+.fa-times-circle:hover {
+    color: rgb(145, 78, 78);
+}
+
+.fa-check-circle:hover {
+    color: rgb(122, 151, 113);
+}
+
+.buttonText {
+  display: inline-block;
+}
+
+.far {
+  color: rgb(90, 90, 90);
 }

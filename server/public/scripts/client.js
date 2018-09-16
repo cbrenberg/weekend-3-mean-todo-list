@@ -9,7 +9,8 @@ todoApp.controller('TodoController', ['$http', function ($http) {
 
   //vm variables
   vm.todoToAdd = {};
-  vm.todoData = []
+  vm.todoData = [];
+  vm.searchString = '';
 
   //vm HTTP requests
 
