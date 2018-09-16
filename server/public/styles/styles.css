@@ -28,7 +28,6 @@ hr {
 }
 
 .deleteButton, .completeButton {
-  display: inline-block;
   align-items: center;
   float: right;
   margin-left: 1rem;
@@ -46,10 +45,6 @@ div.completed>.taskText {
 
 .fa-check-circle:hover {
     color: rgb(122, 151, 113);
-}
-
-.buttonText {
-  display: inline-block;
 }
 
 .far {

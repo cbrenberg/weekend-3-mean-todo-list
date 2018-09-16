@@ -7,6 +7,7 @@
   <title>Weekend 3 Task List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="vendors/bootstrap.min.css">
+  <!-- Line below sources icons to use for button interface -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css" />
@@ -38,18 +39,12 @@
     <input class="form-control" id="filterBar" ng-model="vm.searchString" placeholder="Enter text to filter todo items" />
 
     <hr>
-    <!-- sort by: completed or category (dropdown?) -->
     <div ng-repeat="todo in vm.todoData | filter: vm.searchString | orderBy: 'completed'" class="todoOut container row" ng-class="{completed: todo.completed}">
-      <!-- Change input to something else? Text gets cut off when longer than width of input box -->
       <div class="col col-7 taskText">
         <h5 class="task">{{todo.task}}</h5>
         <p class="category"><small>Category: {{todo.category}}</small></p>
       </div>
       <div class="col col-5">
-        
-        <!-- <a class="completeButton btn btn-outline-secondary align-middle" type="button" ng-click="vm.markCompleted(todo)" value="Complete" -->
-        <!-- ng-if="!todo.completed"><i class="far fa-check-circle fa-2x"></i>Complete</a> -->
-        <!-- <a class="deleteButton btn btn-outline-dark align-middle" type="button" ng-click="vm.deleteTodo(todo)" value="Delete">Delete</a> -->
         <div class="deleteButton">
           <i class="far fa-times-circle fa-4x" ng-click="vm.deleteTodo(todo)" title="Click to delete item"></i>
         </div>
