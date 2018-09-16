@@ -40,7 +40,7 @@
       <!-- Change input to something else? Text gets cut off when longer than width of input box -->
       <input type="text" readonly class="todoText" value="{{todo.task}}"/>
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" ng-click="vm.markCompleted()">Complete</button>
+        <button class="btn btn-outline-secondary" type="button" ng-click="vm.markCompleted(todo)">Complete</button>
         <button class="btn btn-outline-dark" type="button" ng-click="vm.deleteTodo(todo)">Delete</button>
       </div>
     </div>

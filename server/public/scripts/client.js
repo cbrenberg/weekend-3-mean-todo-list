@@ -14,7 +14,7 @@ todoApp.controller('TodoController', ['$http', function ($http) {
 
   //vm HTTP requests
 
-  //GET
+  //GET retrieves all database todo items
   vm.getTodos = function () {
     console.log('in getTodos');
     $http({
@@ -22,13 +22,14 @@ todoApp.controller('TodoController', ['$http', function ($http) {
       url: '/todo'
     }).then(function (response) {
       console.log('Back from /todo GET with:', response.data);
+      //pushes response data to array for ng-repeat to loop over on DOM
       vm.todoData = response.data;
     }).catch(function (error) {
       console.log('Error retrieving todo items:', error);
     })
   }
 
-  //POST
+  //POST sends user input to server for DB entry
   vm.addTodo = function () {
     console.log('in addTodo');
     $http({
@@ -37,19 +38,32 @@ todoApp.controller('TodoController', ['$http', function ($http) {
       data: vm.todoToAdd
     }).then(function (response) {
       console.log('Back from /todo POST with:', response);
+      //refresh todolist on DOM
       vm.getTodos();
+      //reset inputs to empty
       vm.todoToAdd = {};
     }).catch(function (error) {
       console.log('Error adding todo:', error);
     })
   }
 
-  //PUT
-  vm.markCompleted = function () {
+  //PUT changes completed property from false to true
+  vm.markCompleted = function (todoToUpdate) {
     console.log('in markCompleted');
+    $http({
+      method: 'PUT',
+      url: '/todo',
+      params: todoToUpdate
+    }).then(function(response) {
+      console.log('Todo marked as complete!', response);
+      //refresh todo list on DOM
+      vm.getTodos();
+    }).catch(function(error) {
+      console.log('Error marking todo complete:', error);
+    })
   }
 
-  //DELETE
+  //DELETE selects a todo item for deletion
   vm.deleteTodo = function (todoToDelete) {
     console.log('in deleteTodo');
     $http({
@@ -57,6 +71,7 @@ todoApp.controller('TodoController', ['$http', function ($http) {
       url: '/todo',
       params: todoToDelete
     }).then(function (response) {
+      //refresh todo list on DOM
       vm.getTodos();
       console.log('Back from /todo DELETE:', response);
     }).catch(function (error) {
