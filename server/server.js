@@ -33,7 +33,7 @@ const Schema = mongoose.Schema; // Set schema for database
 const todoSchema = new Schema({
   task: { type: String, required: true },
   completed: { type: Boolean, required: true, default: false },
-  category: { type: String, required: true }
+  category: { type: String, required: true, default: ' '}
 });
 
 //sets model, allows interaction with DB
