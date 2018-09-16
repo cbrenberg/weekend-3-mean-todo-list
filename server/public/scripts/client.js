@@ -31,7 +31,17 @@ todoApp.controller('TodoController', ['$http', function($http) {
   //POST
   vm.addTodo = function() {
     console.log('in addTodo');
-    vm.getTodos();
+    $http({
+      method: 'POST', 
+      url: '/todo',
+      data: vm.todoToAdd
+    }).then(function(response){
+      console.log('Back from /todo POST with:', response);
+      vm.getTodos();
+      vm.todoToAdd = {};
+    }).catch(function(error) {
+      console.log('Error adding todo:', error);
+    })
   }
 
   //PUT

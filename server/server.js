@@ -51,3 +51,14 @@ app.get('/todo', (req, res) => {
     res.sendStatus(500); // server error
   })
 })
+
+app.post('/todo', (req, res) => {
+  let dataFromClient = req.body;
+  Todo.create(dataFromClient).then(()=>{
+    console.log('Todo added:', dataFromClient);
+    res.sendStatus(201);//success!
+  }).catch((error) => {
+    console.log('Error adding todo:', error);
+    res.sendStatus(500);//server error
+  })
+})

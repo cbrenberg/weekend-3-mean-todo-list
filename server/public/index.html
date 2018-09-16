@@ -37,6 +37,7 @@
     <h2>Task List</h2>
     <!-- sort by: completed or category (dropdown?) -->
     <div ng-repeat="todo in vm.todoData" class="input-group todoOut">
+      <!-- Change input to something else? Text gets cut off when longer than width of input box -->
       <input type="text" readonly class="todoText" value="{{todo.task}}"/>
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="button" ng-click="vm.markCompleted()">Complete</button>
