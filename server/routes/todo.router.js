@@ -14,7 +14,7 @@ const todoSchema = new Schema({
 const Todo = mongoose.model('todo', todoSchema);
 
 //retrieves all items currently stored in DB
-app.get('/todo', (req, res) => {
+router.get('/', (req, res) => {
   Todo.find({}).then(function (todosFound) {
     console.log('/todo GET hit:', todosFound)
     res.send(todosFound);//respond to client with db items
@@ -25,7 +25,7 @@ app.get('/todo', (req, res) => {
 })
 
 //creates new todo item on DB
-app.post('/todo', (req, res) => {
+router.post('/', (req, res) => {
   let dataFromClient = req.body;
   Todo.create(dataFromClient).then(() => {
     console.log('Todo added:', dataFromClient);
@@ -37,7 +37,7 @@ app.post('/todo', (req, res) => {
 })
 
 //deletes selected item from DB
-app.delete('/todo', (req, res) => {
+router.delete('/', (req, res) => {
   let todoToDelete = req.query._id
   Todo.findByIdAndRemove(todoToDelete).then(() => {
     console.log('Deleted');
@@ -49,7 +49,7 @@ app.delete('/todo', (req, res) => {
 })
 
 //Updates completed property of selected todo item with value: true
-app.put('/todo', (req, res) => {
+router.put('/', (req, res) => {
   console.log('PUT. Item to edit:', req.query)
   const todoToEdit = {
     _id: req.query._id,
