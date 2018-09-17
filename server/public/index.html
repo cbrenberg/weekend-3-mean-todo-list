@@ -6,15 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Weekend 3 Task List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Source SweetAlert -->
- 
   <!-- Source Bootstrap -->
   <link rel="stylesheet" href="vendors/bootstrap.min.css">
   <!-- Line below sources icons to use for button interface -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css"/>
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css" />
   <script src="vendors/angular.min.js"></script>
+  <!-- Source SweetAlert -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="scripts/client.js"></script>
 </head>
@@ -40,7 +39,7 @@
 
     <br>
     <h2>Task List</h2>
-    <input class="form-control" id="filterBar" ng-model="vm.searchString" placeholder="Enter text to filter todo items by task or category" />
+    <input class="form-control" id="filterBar" ng-model="vm.searchString" placeholder="Enter text to filter todo items by task or category"/>
 
     <hr>
     <div ng-repeat="todo in vm.todoData | filter: vm.searchString | orderBy: 'completed'" class="todoOut container row" ng-class="{completed: todo.completed}">
@@ -55,7 +54,7 @@
         <div class="completeButton">
           <i class="far fa-check-circle fa-3x" ng-click="vm.markCompleted(todo)" title="Click to mark item complete" ng-if="!todo.completed"></i>
         </div>
-        
+
       </div>
       <hr>
     </div>
