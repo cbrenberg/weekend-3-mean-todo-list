@@ -22,24 +22,10 @@ mongoose.connection.on('open', () => {
   // Success!
   console.log('Connected to Mongo');
 });
-
+//log error message
 mongoose.connection.on('error', (error) => {
   console.log('ERROR CONNECTING TO MONGO', error);
 });
-
-
-//Move to /todo router later
-const Schema = mongoose.Schema; // Set schema for database
-
-//validates data being sent to DB to ensure all properties exist
-const todoSchema = new Schema({
-  task: { type: String, required: true },
-  completed: { type: Boolean, required: true, default: false },
-  category: { type: String }
-});
-
-//sets model, allows interaction with DB
-const Todo = mongoose.model('todo', todoSchema);
 
 //spin up server
 app.listen(PORT, () => {
