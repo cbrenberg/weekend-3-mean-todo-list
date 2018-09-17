@@ -54,11 +54,11 @@ todoApp.controller('TodoController', ['$http', function ($http) {
       method: 'PUT',
       url: '/todo',
       params: todoToUpdate
-    }).then(function(response) {
+    }).then(function (response) {
       console.log('Todo marked as complete!', response);
       //refresh todo list on DOM
       vm.getTodos();
-    }).catch(function(error) {
+    }).catch(function (error) {
       console.log('Error marking todo complete:', error);
     })
   }
@@ -66,19 +66,36 @@ todoApp.controller('TodoController', ['$http', function ($http) {
   //DELETE selects a todo item for deletion
   vm.deleteTodo = function (todoToDelete) {
     console.log('in deleteTodo');
-    $http({
-      method: 'DELETE',
-      url: '/todo',
-      params: todoToDelete
-    }).then(function (response) {
-      //refresh todo list on DOM
-      vm.getTodos();
-      console.log('Back from /todo DELETE:', response);
-    }).catch(function (error) {
-      console.log('Error deleting item:', error);
-    })
-  }
-
+    //Popup SweetAlert confirmation dialog
+    swal({
+      title: 'Are you sure you want to delete?',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true
+    }).then(function (willDelete) {
+      if (willDelete) {
+        $http({
+          method: 'DELETE',
+          url: '/todo',
+          params: todoToDelete
+        }).then(function (response) {
+          //refresh todo list on DOM
+          vm.getTodos();
+          console.log('Back from /todo DELETE:', response);
+        }).catch(function (error) {
+          console.log('Error deleting item:', error);
+        })
+        //popup success dialog
+        swal({
+          title: 'Task successfully deleted!',
+          icon: 'success'
+        });
+      } else {
+        return;
+      }
+    });
+  };
   //GET todos on page load
   vm.getTodos();
-}])
+}]);
+
