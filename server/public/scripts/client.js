@@ -98,4 +98,3 @@ todoApp.controller('TodoController', ['$http', function ($http) {
   //GET todos on page load
   vm.getTodos();
 }]);
-
