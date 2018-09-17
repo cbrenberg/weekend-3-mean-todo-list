@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 //globals
 const PORT = process.env.PORT || 5000;
-const mongoUrl = 'mongodb://localhost:27017/todolist';
+const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/todolist';
 const todoRouter = require('./routes/todo.router');
 
 //uses
